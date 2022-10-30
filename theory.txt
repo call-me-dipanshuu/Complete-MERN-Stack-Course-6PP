@@ -1,0 +1,191 @@
+nodejs is js runtime environment 
+it hepls in running js outside the browser
+package.json:dependency
+package-lock.json:dependency's dependency
+window is frontend browser object which can be accessed on browser only not terminal//Diff b/w frontend js and backend js
+Module is a complex function organized in single or multiple files which can be reused throughout the node
+
+*Modules
+//File based,Build In,Third-party
+build in:modules which we don't have to download
+npm i nodemon -g
+//we are installing for the whole system
+
+const http=require("http");
+http.createServer((req,res,next)=>{
+    
+})
+next is a callback func for multiple routing
+
+*For deploying on heroku:
+git init 
+git add .
+git commit -am "make it better"
+ git push heroku main
+heroku git:remote -a testinggkp
+git push heroku master
+
+#Express JS
+Web framework for nodejs 
+CRUD:
+POST,GET,PUT,DELETE
+
+We can't access the body without body parser
+
+//19:22
+
+REST(Representational State transfer ) is an API that defines a set of functions that programmer can use to send requests and receive responses using http protocol methods such as 
+get or post request
+
+app.use(express.json());
+for getting the body data as response after the api request
+
+mongodb uses json like document
+
+{
+name:'John',
+age:'42',
+status:'A'
+}
+
+{
+name:'Abhi',
+age:'23',
+status:'B'
+}
+
+{
+name:'Balu',
+age:'34',
+status:'C'
+}
+3Documents
+Array of documents:Collections
+
+
+mongo
+show dbs
+use 7A
+
+ ->db.students.insertOne({name:"abhi",favColor:"black"})
+
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("635bd00d3db6f6cd4dc98a14")
+}
+
+------------------------------------------------------------------
+ show collections
+students
+> db.students.find()
+{ "_id" : ObjectId("635bd00d3db6f6cd4dc98a14"), "name" : "abhi", "favColor" : "black" }
+> db.personal.insertOne({name:"Deepanshu",interest:"Enginnering"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("635bd3113db6f6cd4dc98a15")
+}
+> show collections
+personal
+students
+> db.personal.find()
+{ "_id" : ObjectId("635bd3113db6f6cd4dc98a15"), "name" : "Deepanshu", "interest" : "Enginnering" }
+> db.personal.insertMany({name:"Isha",subject:"Verbal Ability"},{name:"Shivani Batra",subject:"Cloud Computing"},{name:"Ajay",subject:"Machine Learning"})
+uncaught exception: TypeError: documents.map is not a function :
+DBCollection.prototype.insertMany@src/mongo/shell/crud_api.js:307:17
+@(shell):1:1
+> db.personal.insertMany([{name:"Isha",subject:"Verbal Ability"},{name:"Shivani Batra",subject:"Cloud Computing"},{name:"Ajay",subject:"Machine Learning"}])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("635bd41d3db6f6cd4dc98a16"),
+                ObjectId("635bd41d3db6f6cd4dc98a17"),
+                ObjectId("635bd41d3db6f6cd4dc98a18")
+        ]
+}
+> db.personal.find({name:"Shivani Batra"})
+{ "_id" : ObjectId("635bd41d3db6f6cd4dc98a17"), "name" : "Shivani Batra", "subject" : "Cloud Computing" }
+
+-------------------------------------------------------------
+
+> db.personal.insertOne({name:"Shivani Batra",position:"Additonal HOD"})
+{
+        "acknowledged" : true,
+        "insertedId" : ObjectId("635bd5553db6f6cd4dc98a19")
+}
+> db.personal.find({name:"Shivani Batra"})
+{ "_id" : ObjectId("635bd41d3db6f6cd4dc98a17"), "name" : "Shivani Batra", "subject" : "Cloud Computing" }
+{ "_id" : ObjectId("635bd5553db6f6cd4dc98a19"), "name" : "Shivani Batra", "position" : "Additonal HOD" }
+> db.personal.find({name:"Shivani Batra"}).limit(1)
+{ "_id" : ObjectId("635bd41d3db6f6cd4dc98a17"), "name" : "Shivani Batra", "subject" : "Cloud Computing" }
+
+-------------------------------------------------------------------
+
+for operator in mongodb we use $
+
+-------------------------------------------------------------------
+> db.personal.updateOne({name:"Shivani Batra"},{$set:{name:"Shivani Yadav"}})
+{ "acknowledged" : true, "matchedCount" : 1, "modifiedCount" : 1 }
+
+------------------------------------------------------------------------------------
+
+> db.personal.deleteOne({name:"Shivani Batra"})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+------------------------------------------------------------------------------------
+
+> db.personal.deleteMany({name:"Shivani Batra"})
+{ "acknowledged" : true, "deletedCount" : 2 }
+
+> db.students.deleteMany({})
+{ "acknowledged" : true, "deletedCount" : 1 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
